@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import { services } from './services';
 import { ProjectList } from './blocks';
+import { AppStore } from './stores/AppStore';
 
 class App extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      projects: []
-    }
+    this.store = AppStore
+    this.store.subscribe(() => this.setState(() => this.store.getState()))
+    this.state = this.store.getState()
   }
 
   componentDidMount() {
-    services.getProjects().then(data => this.setState(old => { return { projects: data.projects }}))
+    this.store.dispatch({type: 'GET_PROJECTS'})
   }
 
   render() {
