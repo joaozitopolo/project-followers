@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { ProjectList } from './blocks';
+import { ProjectList, Nav } from './blocks';
 import { AppStore } from './stores/AppStore';
 
 class App extends Component {
@@ -18,8 +18,14 @@ class App extends Component {
 
   render() {
     return <React.Fragment>
-      <h1>Projects Followers</h1>
-      <ProjectList projects={this.state.projects} />
+      <Nav />
+      <div className="uk-container">
+        <div data-uk-grid>
+          <div className="uk-width-1-1">
+            <ProjectList projects={this.state.projects} />
+          </div>
+        </div>
+      </div>
     </React.Fragment>
   }
 }

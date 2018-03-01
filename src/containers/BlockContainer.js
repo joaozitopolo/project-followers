@@ -7,16 +7,20 @@ export class BlockContainer extends React.Component {
 
     render() {
         return <React.Fragment>
-            <div>
-                <h2>{this.props.title} {this.props.count ? `(${this.props.count})` : ''}</h2>
-            </div>
-
-            {this.props.children}
+            <ul data-uk-accordion className={this.props.className}>
+                <li>
+                    <a className="uk-accordion-title" href="#">{this.props.title}</a>
+                    <div className="uk-accordion-content">
+                        {this.props.children}
+                    </div>
+                </li>
+            </ul>
         </React.Fragment>
     }
 }
 
 BlockContainer.propTypes = {
     title: PropTypes.string.isRequired,
-    count: PropTypes.number
+    count: PropTypes.number,
+    className: PropTypes.string
 }
