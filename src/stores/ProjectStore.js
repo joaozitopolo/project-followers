@@ -25,4 +25,4 @@ const middleware = store => next => action => {
     }
 }
 
-export const AppStore = createStore(reducer, state, applyMiddleware(middleware))
+export const ProjectStore = createStore(reducer, state, applyMiddleware(middleware))
