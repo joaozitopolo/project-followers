@@ -1,6 +1,7 @@
 
 import { createStore, applyMiddleware } from 'redux'
 import { services } from "../services";
+import { Points } from '../services/Points';
 
 const state = {
     projects: []
@@ -31,7 +32,10 @@ const middleware = store => next => action => {
                 services.getTasks(action.project),
                 services.getLiftings(action.project)
             ]).then(([tasks, liftings]) => {
-                store.dispatch({ type: 'ADD_PROJECT', project: { ...action.project, tasks, liftings}})
+                let project = { ...action.project, tasks, liftings }
+                project.points = evalPoints(project)
+                store.dispatch({ type: 'ADD_PROJECT', project})
+                console.log(project)
             })
 
         default:
@@ -40,3 +44,24 @@ const middleware = store => next => action => {
 }
 
 export const ProjectStore = createStore(reducer, state, applyMiddleware(middleware))
+
+const evalPoints = (project) => {
+    let points = new Points()
+
+    // listed points
+    project.liftings.forEach(lifting => {
+        points = points.put(lifting.points, `lifting ${lifting.file}`, 0)
+    })
+
+    // mapped for execution points
+    project.tasks.forEach(task => {
+        points = points.put(task.points, `task ${task.file}`, evalStatus(task))
+    })
+
+    // finish
+    return points
+}
+
+const evalStatus = (item) => {
+    return item.stop ? 2 : item.start ? 1 : 0
+}
