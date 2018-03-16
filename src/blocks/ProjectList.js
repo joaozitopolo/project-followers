@@ -5,6 +5,7 @@ import { BlockContainer } from '../containers';
 import { TaskList } from './TaskList';
 import { ProjectStore } from '../stores/ProjectStore';
 import { LiftingList } from './LiftingList';
+import { DisplayPoints } from './DisplayPoints';
 
 
 export class ProjectList extends React.Component {
@@ -26,6 +27,7 @@ export class ProjectList extends React.Component {
                 <BlockContainer key={project.name} title={project.name} className="block-project">
                     <TaskList project={project} />
                     <LiftingList project={project} />
+                    <DisplayPoints project={project} />
                 </BlockContainer>
             ))}
         </React.Fragment>
