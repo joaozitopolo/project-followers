@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { BlockContainer } from '../containers';
 import { TaskList } from './TaskList';
 import { ProjectStore } from '../stores/ProjectStore';
+import { LiftingList } from './LiftingList';
 
 
 export class ProjectList extends React.Component {
@@ -24,12 +25,9 @@ export class ProjectList extends React.Component {
             {this.state.projects.map(project => (
                 <BlockContainer key={project.name} title={project.name} className="block-project">
                     <TaskList project={project} />
+                    <LiftingList project={project} />
                 </BlockContainer>
             ))}
         </React.Fragment>
     }
-}
-
-ProjectList.propTypes = {
-    projects: PropTypes.array.isRequired
 }
