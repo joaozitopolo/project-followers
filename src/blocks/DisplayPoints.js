@@ -9,7 +9,7 @@ export class DisplayPoints extends React.Component {
         return <React.Fragment>
             <h4>Points</h4>
             <ul className="uk-list points">
-                {Object.values(project.points.points).map(pointsListItem)}
+                {project.points.list().map(pointsListItem)}
             </ul>
         </React.Fragment>
     }
