@@ -8,9 +8,17 @@ export class DisplayPoints extends React.Component {
         let {project} = this.props
         return <React.Fragment>
             <h4>Points</h4>
-            <ul className="uk-list points">
-                {project.points.list().map(pointsListItem)}
-            </ul>
+            <div data-uk-grid className="uk-grid-divider">
+                <div className="uk-width-1-3">
+                    <PointsList points={project.points.list(2)} />             
+                </div>
+                <div className="uk-width-1-3">
+                    <PointsList points={project.points.list(1)} />             
+                </div>
+                <div className="uk-width-1-3">
+                    <PointsList points={project.points.list(0)} />             
+                </div>
+            </div>
         </React.Fragment>
     }
 }
@@ -18,6 +26,12 @@ export class DisplayPoints extends React.Component {
 DisplayPoints.propTypes = {
     project: PropTypes.object
 }
+
+const PointsList = ({points}) => (
+    <ul className="uk-list points">
+        {points.map(pointsListItem)}
+    </ul>
+)
 
 const pointsListItem = (point) => (
     <li key={point.name} className={`status${point.status}`}>
