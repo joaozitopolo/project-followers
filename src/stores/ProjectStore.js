@@ -35,7 +35,6 @@ const middleware = store => next => action => {
                 let project = { ...action.project, tasks, liftings }
                 project.points = evalPoints(project)
                 store.dispatch({ type: 'ADD_PROJECT', project})
-                console.log(project)
             })
 
         default:

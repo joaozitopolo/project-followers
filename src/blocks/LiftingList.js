@@ -39,10 +39,14 @@ const liftingListItem = (lifting) => {
 }
 
 const messagePosition = (lifting) => {
+    let msg = []
     if(lifting.stop) {
-        return "finished"
+        msg.push("finished")
     } else if(lifting.start) {
-        return "started"
+        msg.push("started")
+        if(lifting.continuous) {
+            msg.push("continuous")
+        }
     }
-    return null
+    return msg.length ? msg.join(', ') : null
 }
