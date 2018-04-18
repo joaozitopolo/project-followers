@@ -9,7 +9,7 @@ export class DisplayPoints extends React.Component {
         return <React.Fragment>
             <div data-uk-grid className="uk-grid-divider">
                 <div className="uk-width-1-3">
-                    <h4>Points Lifted</h4>
+                    <h4>Lifted Points</h4>
                     <PointsList points={project.points.list(0)} />             
                 </div>
                 <div className="uk-width-1-3">
@@ -17,7 +17,7 @@ export class DisplayPoints extends React.Component {
                     <PointsList points={project.points.list(1)} />             
                 </div>
                 <div className="uk-width-1-3">
-                    <h4>Points Finished</h4>
+                    <h4>Finished Points</h4>
                     <PointsList points={project.points.list(2)} />             
                 </div>
             </div>
