@@ -25,7 +25,7 @@ export class Points {
     list(status) {
         let out = Object.values(this.points)
         if(status !== undefined) {
-            out = out.filter(item => item.status == status)
+            out = out.filter(item => item.status === status)
         }
         out.sort((a, b) => {
             let compare = -(a.status - b.status)
@@ -53,7 +53,7 @@ class Point {
     owner(owner, owner_status) {
         let { name, status, owners } = this
         owners.push({owner, owner_status})
-        status = owner_status == 1 || status == 1 ? 1 : owner_status == 2 ? 2 : status 
+        status = owner_status === 1 || status === 1 ? 1 : owner_status === 2 ? 2 : status 
         return new Point(name, status, owners)
     }
 

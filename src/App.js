@@ -4,10 +4,6 @@ import { ProjectList, Nav } from './blocks';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return <React.Fragment>
       <Nav />

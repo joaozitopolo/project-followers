@@ -1,11 +1,10 @@
 
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
 import { BlockContainer } from '../containers';
-import { TaskList } from './TaskList';
 import { ProjectStore } from '../stores/ProjectStore';
-import { LiftingList } from './LiftingList';
 import { DisplayPoints } from './DisplayPoints';
+import { LiftingList } from './LiftingList';
+import { TaskList } from './TaskList';
 
 
 export class ProjectList extends React.Component {

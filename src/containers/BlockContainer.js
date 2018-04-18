@@ -9,7 +9,7 @@ export class BlockContainer extends React.Component {
         return <React.Fragment>
             <ul data-uk-accordion className={this.props.className}>
                 <li>
-                    <a className="uk-accordion-title" href="#">{this.props.title}</a>
+                    <a className="uk-accordion-title">{this.props.title}</a>
                     <div className="uk-accordion-content">
                         {this.props.children}
                     </div>
