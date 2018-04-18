@@ -25,8 +25,14 @@ export class ProjectList extends React.Component {
         return <React.Fragment>
             {this.state.projects.map(project => (
                 <BlockContainer key={project.name} title={project.name} className="block-project">
-                    <TaskList project={project} />
-                    <LiftingList project={project} />
+                    <div data-uk-grid className="uk-grid-divider">
+                        <div className="uk-width-1-2">
+                            <LiftingList project={project} />
+                        </div>
+                        <div className="uk-width-1-2">
+                            <TaskList project={project} />
+                        </div>
+                    </div>
                     <DisplayPoints project={project} />
                 </BlockContainer>
             ))}
